@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: 428650911713.dkr.ecr.us-east-1.amazonaws.com/flask-project
+  pullPolicy: Always
+  tag: latest
+
+container:
+  port: 8000
+  name: flask
+
+service:
+  type: LoadBalancer
+  port: 8080
+  targetPort: 8000
+  name: flask-service
+
+labels:
+  app: flask-app
+
+deployment:
+  name: flask-deployment
