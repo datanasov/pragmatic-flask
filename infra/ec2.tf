@@ -40,9 +40,9 @@ resource "aws_instance" "ec2" {
 
        ######CONFIG########
        mkdir /var/lib/jenkins/.kube/
-       cp ~/.kube/config /var/lib/jenkins/.kube/
-       chown -R jenkins: /var/lib/jenkins/
-       chmod 600 /var/lib/jenkins/.kube/config
+       sudo cp ~/.kube/config /var/lib/jenkins/.kube/
+       sudo chown -R jenkins: /var/lib/jenkins/
+       sudo chmod 600 /var/lib/jenkins/.kube/config
 
        ######CREATE EKSCTL CLUSTER###
         echo "
