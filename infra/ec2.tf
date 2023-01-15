@@ -44,19 +44,21 @@ resource "aws_instance" "ec2" {
        chown -R jenkins: /var/lib/jenkins/
        chmod 600 /var/lib/jenkins/.kube/config
 
-       ######EKSCTL CLUSTER FILE###
+       ######CREATE EKSCTL CLUSTER###
         echo "
         apiVersion: eksctl.io/v1alpha5
         kind: ClusterConfig
 
         metadata:
           name: basic-cluster
-          region: eu-central-1
+          region: us-east-1
 
         nodeGroups:
           - name: node1
             instanceType: t2.micro
             desiredCapacity: 2" > cluster.yaml
+	
+	eksctl create cluster -f cluster.yaml
 EOF
   key_name             = aws_key_pair.deployer.key_name
   iam_instance_profile = aws_iam_instance_profile.profile.name
