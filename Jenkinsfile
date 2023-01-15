@@ -25,7 +25,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh '''
-                    helm upgrade flaskrelease pragmatic-flask/helmchart/ --install --atomic --wait
+                    helm upgrade flaskrelease helmchart/ --install --atomic --wait
                 '''
           }
         }
