@@ -10,6 +10,7 @@ pipeline {
         stage('Build') {
             steps {
               sh '''
+              	pwd
                 docker build -t "${image_name}:$GIT_COMMIT" pragmatic-flask/flaskapp/
               '''
             }
